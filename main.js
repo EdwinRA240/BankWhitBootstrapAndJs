@@ -22,6 +22,11 @@ let users = [
     }
 ]
 
-var jsonUsers = JSON.stringify(users)
-localStorage.setItem('allUsers', users);
+let jsonUsers = JSON.stringify(users)
+localStorage.setItem('allUsers', jsonUsers);
+console.log(jsonUsers); //JSON
+
+let allUsers = localStorage.getItem('allUsers');
+let arrUsers = JSON.parse(allUsers);
+console.log(arrUsers);
 
