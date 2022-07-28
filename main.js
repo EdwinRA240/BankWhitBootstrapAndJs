@@ -50,12 +50,14 @@ btnLogin.addEventListener("click", () => {
     inputEmail.value = "";
     inputPass.value = "";
     alert("Inicio de seccion correcto");
-    let url = `http://127.0.0.1:5500/Proyectos/Bank/IngeBank.html`;
-    window.open(url, "_self");
-
-  } else {
+    // let url = `http://127.0.0.1:5500/Proyectos/Bank/ingeBank.html`;
+    // window.open(url, "_self");
+    location.href = ("./ingeBank.html");
+} else {
     inputEmail.value = "";
     inputPass.value = "";
     alert("Email or Password incorrect");
   }
 });
+
+
