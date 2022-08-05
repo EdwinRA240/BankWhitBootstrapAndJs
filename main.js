@@ -56,12 +56,18 @@ if (btnLogin) {
 
     if (user != undefined) {
       localStorage.setItem("idUser", user.id);
-      alert("Inicio de Sesión Correcto"); //add Bootstrap alert
+      // alert("Inicio de Sesión Correcto");
+      swal("Inicio de sesión correcto!", "", "success");
       location.href = "./ingeBank.html";
     } else {
       inputEmail.value = "";
       inputPass.value = "";
-      alert("Error en ingreso de contraseña o email");
+      // alert("Error en ingreso de contraseña o email");
+      swal(
+        "Inicio de sesión incorrecto!",
+        "Error en email o contraseña",
+        "error"
+      );
     }
   });
 }
@@ -78,8 +84,7 @@ let idUser = localStorage.getItem("idUser");
 
 //Bienvenida
 if (true) {
-  bienvenida.innerHTML = `
-    Bienvenid@: ${arrUsers[idUser].name} `;
+  bienvenida.innerHTML = ` Bienvenid@: ${arrUsers[idUser].name} `;
 }
 
 //Saldo
@@ -107,11 +112,21 @@ if (btnIngresar) {
         ) {
           arrUsers[idUser].saldo =
             parseInt(inputIngresar.value) + arrUsers[idUser].saldo;
-          alert(`Su nuevo saldo es: ${arrUsers[idUser].saldo}`);
+            // alert(`Su nuevo saldo es: ${arrUsers[idUser].saldo}`);
+          swal(
+            "Transacion exitosa!",
+            `Su nuevo saldo es: ${arrUsers[idUser].saldo}`,
+            "success"
+          );
           inputIngresar.value = "";
           udateLocalStorage();
         } else if (inputIngresar.value !== "") {
-          alert("No se pude realizar la transacion, porque el maximo es $990");
+          // alert("No se pude realizar la transacion, porque el maximo es $990");
+          swal(
+            "Transacion no exitosa!",
+            `No se pude realizar la transacion, porque el maximo en cuenta es $990`,
+            "error"
+          );
           inputIngresar.value = "";
         }
       });
@@ -134,11 +149,21 @@ if (btnRetirar) {
         ) {
           arrUsers[idUser].saldo =
             arrUsers[idUser].saldo - parseInt(inputRetirar.value);
-          alert(`Su nuevo saldo es: ${arrUsers[idUser].saldo}`);
+            // alert(`Su nuevo saldo es: ${arrUsers[idUser].saldo}`);
+          swal(
+            "Transacion exitosa!",
+            `Su nuevo saldo es: ${arrUsers[idUser].saldo}`,
+            "success"
+          );
           inputRetirar.value = "";
           udateLocalStorage();
         } else if (inputRetirar.value !== "") {
-          alert("No se pude realizar la transacion, porque el minimo es $10");
+          // alert("No se pude realizar la transacion, porque el minimo es $10");
+          swal(
+            "Transacion no exitosa!",
+            `No se pude realizar la transacion, porque el minimo en cuenta es $10`,
+            "error"
+          );
           inputRetirar.value = "";
         }
       });
