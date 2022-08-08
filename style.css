@@ -9,3 +9,7 @@
     background-color: gray;
     font-size: 15px;
   }
+
+.swal-button:hover {
+    background-color: blue;
+}
